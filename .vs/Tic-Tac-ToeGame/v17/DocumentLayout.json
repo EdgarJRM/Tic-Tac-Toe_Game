@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{2B847FCD-939C-4A43-B642-BA338DA36057}|Tic-Tac-ToeGame.csproj|c:\\users\\oim\\documents\\python\\cse 310 programaci\u00F3n aplicada\\tic-tac-toegame\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{2B847FCD-939C-4A43-B642-BA338DA36057}|Tic-Tac-ToeGame.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B847FCD-939C-4A43-B642-BA338DA36057}|Tic-Tac-ToeGame.csproj|c:\\users\\oim\\documents\\python\\cse 310 programaci\u00F3n aplicada\\tic-tac-toegame\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2B847FCD-939C-4A43-B642-BA338DA36057}|Tic-Tac-ToeGame.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -25,8 +33,20 @@
               "ToolTip": "C:\\Users\\OIM\\Documents\\Python\\CSE 310 Programaci\u00F3n aplicada\\Tic-Tac-ToeGame\\Form1.cs [Dise\u00F1o]",
               "RelativeToolTip": "Form1.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-25T21:27:58.618Z",
+              "WhenOpened": "2025-01-27T22:51:39.498Z",
               "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\OIM\\Documents\\Python\\CSE 310 Programaci\u00F3n aplicada\\Tic-Tac-ToeGame\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\OIM\\Documents\\Python\\CSE 310 Programaci\u00F3n aplicada\\Tic-Tac-ToeGame\\Form1.cs",
+              "RelativeToolTip": "Form1.cs",
+              "ViewState": "AgIAACsBAAAAAAAAAAAAADABAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-27T02:40:27.575Z"
             }
           ]
         }
