@@ -53,6 +53,7 @@ namespace Tic_Tac_ToeGame
             }
             reset();
             Enable_False(true);
+            checker = false;
         }
 
         void reset()
