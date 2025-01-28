@@ -39,7 +39,10 @@
             btnTic8 = new Button();
             btnTic7 = new Button();
             panel1 = new Panel();
+            btnTic3 = new Button();
             groupBox1 = new GroupBox();
+            tbx_PlayerO = new TextBox();
+            tbx_PlayerX = new TextBox();
             lblPlayerO = new Label();
             lblPlayerX = new Label();
             exit = new Button();
@@ -47,7 +50,6 @@
             newGame = new Button();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
-            btnTic3 = new Button();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -161,9 +163,21 @@
             panel1.Size = new Size(282, 282);
             panel1.TabIndex = 10;
             // 
+            // btnTic3
+            // 
+            btnTic3.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
+            btnTic3.Location = new Point(192, 0);
+            btnTic3.Name = "btnTic3";
+            btnTic3.Size = new Size(90, 90);
+            btnTic3.TabIndex = 10;
+            btnTic3.UseVisualStyleBackColor = true;
+            btnTic3.Click += btnTic3_Click;
+            // 
             // groupBox1
             // 
             groupBox1.BackColor = SystemColors.HighlightText;
+            groupBox1.Controls.Add(tbx_PlayerO);
+            groupBox1.Controls.Add(tbx_PlayerX);
             groupBox1.Controls.Add(lblPlayerO);
             groupBox1.Controls.Add(lblPlayerX);
             groupBox1.Controls.Add(exit);
@@ -179,11 +193,27 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Enter the names of the players";
             // 
+            // tbx_PlayerO
+            // 
+            tbx_PlayerO.Location = new Point(124, 114);
+            tbx_PlayerO.Name = "tbx_PlayerO";
+            tbx_PlayerO.PlaceholderText = "Player 2";
+            tbx_PlayerO.Size = new Size(89, 27);
+            tbx_PlayerO.TabIndex = 20;
+            // 
+            // tbx_PlayerX
+            // 
+            tbx_PlayerX.Location = new Point(19, 114);
+            tbx_PlayerX.Name = "tbx_PlayerX";
+            tbx_PlayerX.PlaceholderText = "Player 1";
+            tbx_PlayerX.Size = new Size(90, 27);
+            tbx_PlayerX.TabIndex = 19;
+            // 
             // lblPlayerO
             // 
             lblPlayerO.AutoSize = true;
             lblPlayerO.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPlayerO.Location = new Point(158, 131);
+            lblPlayerO.Location = new Point(156, 140);
             lblPlayerO.Name = "lblPlayerO";
             lblPlayerO.Size = new Size(23, 25);
             lblPlayerO.TabIndex = 18;
@@ -193,7 +223,7 @@
             // 
             lblPlayerX.AutoSize = true;
             lblPlayerX.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPlayerX.Location = new Point(52, 131);
+            lblPlayerX.Location = new Point(50, 140);
             lblPlayerX.Name = "lblPlayerX";
             lblPlayerX.Size = new Size(23, 25);
             lblPlayerX.TabIndex = 17;
@@ -238,7 +268,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(124, 38);
+            pictureBox2.Location = new Point(124, 23);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(90, 90);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -248,22 +278,12 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.X;
-            pictureBox1.Location = new Point(19, 38);
+            pictureBox1.Location = new Point(19, 23);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(90, 90);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 12;
             pictureBox1.TabStop = false;
-            // 
-            // btnTic3
-            // 
-            btnTic3.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            btnTic3.Location = new Point(192, 0);
-            btnTic3.Name = "btnTic3";
-            btnTic3.Size = new Size(90, 90);
-            btnTic3.TabIndex = 10;
-            btnTic3.UseVisualStyleBackColor = true;
-            btnTic3.Click += btnTic3_Click;
             // 
             // Form1
             // 
@@ -309,5 +329,7 @@
         private Label lblPlayerO;
         private Label lblPlayerX;
         private Button btnTic3;
+        private TextBox tbx_PlayerO;
+        private TextBox tbx_PlayerX;
     }
 }

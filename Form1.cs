@@ -1,7 +1,15 @@
+using System;
+using System.IO;
+using System.Diagnostics.Metrics;
+using System.Runtime.Intrinsics.Arm;
+using System.Windows.Forms;
+
 namespace Tic_Tac_ToeGame
 {
     public partial class Form1 : Form
     {
+        static string path = "records.txt";
+        string winner = "Player X";
         Boolean checker;
         int plusone;
 
@@ -25,13 +33,24 @@ namespace Tic_Tac_ToeGame
             {
                 plusone = int.Parse(lblPlayerX.Text);
                 lblPlayerX.Text = Convert.ToString(plusone + 1);
+                winner = tbx_PlayerX.Text;
             }
             else
             {
                 plusone = int.Parse(lblPlayerO.Text);
                 lblPlayerO.Text = Convert.ToString(plusone + 1);
+                winner = tbx_PlayerO.Text;
             }
-            MessageBox.Show("The winner is Player " + letter, "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (winner == "")
+            {
+                MessageBox.Show("The winner is Player " + letter, "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show($"The winner is {winner}", "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
             reset();
             Enable_False(true);
         }
@@ -58,8 +77,6 @@ namespace Tic_Tac_ToeGame
             btnTic8.BackColor = Color.WhiteSmoke;
             btnTic9.BackColor = Color.WhiteSmoke;
         }
-
-
         void score(string letter)
         {
             if (btnTic1.Text == letter && btnTic2.Text == letter && btnTic3.Text == letter)
@@ -126,6 +143,32 @@ namespace Tic_Tac_ToeGame
                 btnTic8.BackColor = Color.PowderBlue;
                 btnTic9.BackColor = Color.PowderBlue;
                 win(letter);
+            }
+        }
+
+        public static void SaveRecord(string playerName = "Player X", int score = 0)
+        {
+            string record = $"{playerName} has won {score} games"; 
+            File.AppendAllText(path, record + Environment.NewLine); // Save the record to the end of the file.
+            MessageBox.Show($"New record set: {record}", "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static void ShowRecords()
+        {
+            if (File.Exists(path))
+            {
+                string[] records = File.ReadAllLines(path);
+
+                string records_Saved = "Records saved: \n";
+                foreach (var record in records)
+                {
+                    records_Saved += record + "\n";
+                }
+                MessageBox.Show(records_Saved, "Records de Tic Tac Toe");
+            }
+            else
+            {
+                MessageBox.Show("There are no records saved", "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -293,21 +336,56 @@ namespace Tic_Tac_ToeGame
 
         private void newGame_Click(object sender, EventArgs e)
         {
+            int score = 0;
+            string winner = "";
+            if (int.Parse(lblPlayerX.Text)> int.Parse(lblPlayerO.Text))
+            {
+                score = int.Parse(lblPlayerX.Text);
+                if (tbx_PlayerX.Text == "") {
+                    winner = "Player 1";
+                }
+                else
+                {
+                    winner = tbx_PlayerX.Text;
+                }
+                SaveRecord(winner, score);
+            }
+            else if (int.Parse(lblPlayerX.Text) > int.Parse(lblPlayerO.Text))
+            {
+                score = int.Parse(lblPlayerO.Text);
+                if (tbx_PlayerO.Text == "")
+                {
+                    winner = "Player 2";
+                }
+                else
+                {
+                    winner = tbx_PlayerO.Text;
+                }
+                SaveRecord(winner, score);
+            }
+            else
+            {
+                MessageBox.Show("There was no winner, you were tied", "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             lblPlayerX.Text = "0";
             lblPlayerO.Text = "0";
             Enable_False(true);
             reset();
+            checker = false;
         }
 
         private void exit_Click(object sender, EventArgs e)
         {
+            ShowRecords();
             Close();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             Enable_False(true);
+            ShowRecords();
             reset();
+            checker = false;
         }
     }
 }
