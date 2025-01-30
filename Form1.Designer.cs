@@ -46,7 +46,7 @@
             lblPlayerO = new Label();
             lblPlayerX = new Label();
             exit = new Button();
-            button11 = new Button();
+            btnReset = new Button();
             newGame = new Button();
             pictureBox2 = new PictureBox();
             pictureBox1 = new PictureBox();
@@ -181,7 +181,7 @@
             groupBox1.Controls.Add(lblPlayerO);
             groupBox1.Controls.Add(lblPlayerX);
             groupBox1.Controls.Add(exit);
-            groupBox1.Controls.Add(button11);
+            groupBox1.Controls.Add(btnReset);
             groupBox1.Controls.Add(newGame);
             groupBox1.Controls.Add(pictureBox2);
             groupBox1.Controls.Add(pictureBox1);
@@ -241,17 +241,17 @@
             exit.UseVisualStyleBackColor = true;
             exit.Click += exit_Click;
             // 
-            // button11
+            // btnReset
             // 
-            button11.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button11.ForeColor = SystemColors.ControlText;
-            button11.Location = new Point(19, 220);
-            button11.Name = "button11";
-            button11.Size = new Size(90, 50);
-            button11.TabIndex = 15;
-            button11.Text = "Reset";
-            button11.UseVisualStyleBackColor = true;
-            button11.Click += button11_Click;
+            btnReset.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReset.ForeColor = SystemColors.ControlText;
+            btnReset.Location = new Point(19, 220);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(90, 50);
+            btnReset.TabIndex = 15;
+            btnReset.Text = "Reset";
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
             // 
             // newGame
             // 
@@ -323,7 +323,7 @@
         private GroupBox groupBox1;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
-        private Button button11;
+        private Button btnReset;
         private Button newGame;
         private Button exit;
         private Label lblPlayerO;

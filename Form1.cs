@@ -3,16 +3,21 @@ using System.IO;
 using System.Diagnostics.Metrics;
 using System.Runtime.Intrinsics.Arm;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Tic_Tac_ToeGame
 {
     public partial class Form1 : Form
     {
+        // Path to store game records / Ruta para almacenar los registros del juego
         static string path = "records.txt";
+
+        // Variables to track the winner, turn checker, and score increment / Variables para el ganador, el turno y el incremento de puntaje
         string winner = "Player X";
         Boolean checker;
         int plusone;
 
+        // Disable or enable all buttons / Deshabilitar o habilitar todos los botones
         void Enable_False(Boolean start = false)
         {
             btnTic1.Enabled = start;
@@ -27,8 +32,10 @@ namespace Tic_Tac_ToeGame
 
         }
 
+        // Function to determine the winner / Función para determinar el ganador
         void win(string letter)
         {
+            //Add the score and record the name of the winner / Agrega la puntuación y registra el nombre del ganador
             if (letter == "X")
             {
                 plusone = int.Parse(lblPlayerX.Text);
@@ -42,6 +49,7 @@ namespace Tic_Tac_ToeGame
                 winner = tbx_PlayerO.Text;
             }
 
+            // Display winner message / Mostrar mensaje del ganador
             if (winner == "")
             {
                 MessageBox.Show("The winner is Player " + letter, "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -51,11 +59,12 @@ namespace Tic_Tac_ToeGame
                 MessageBox.Show($"The winner is {winner}", "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
-            reset();
-            Enable_False(true);
-            checker = false;
+            reset(); // Reset the game / Reiniciar el juego
+            Enable_False(true); // Disable buttons / Deshabilitar botones
+            checker = false; // Makes the game start with the letter X / Hace que el juego comience con la letra X
         }
 
+        // Reset the game board / Reiniciar el tablero del juego
         void reset()
         {
             btnTic1.Text = "";
@@ -78,6 +87,8 @@ namespace Tic_Tac_ToeGame
             btnTic8.BackColor = Color.WhiteSmoke;
             btnTic9.BackColor = Color.WhiteSmoke;
         }
+
+        // Check if there is a winning combination / Verificar si hay una combinación ganadora
         void score(string letter)
         {
             if (btnTic1.Text == letter && btnTic2.Text == letter && btnTic3.Text == letter)
@@ -85,7 +96,7 @@ namespace Tic_Tac_ToeGame
                 btnTic1.BackColor = Color.PowderBlue;
                 btnTic2.BackColor = Color.PowderBlue;
                 btnTic3.BackColor = Color.PowderBlue;
-                win(letter);
+                win(letter); // Declare the winner / Declarar el ganador
             }
 
             if (btnTic1.Text == letter && btnTic4.Text == letter && btnTic7.Text == letter)
@@ -147,13 +158,15 @@ namespace Tic_Tac_ToeGame
             }
         }
 
+        // Save game record to a file / Guardar el registro del juego en un archivo
         public static void SaveRecord(string playerName = "Player X", int score = 0)
         {
-            string record = $"{playerName} has won {score} games"; 
+            string record = $"{playerName} has won {score} games";
             File.AppendAllText(path, record + Environment.NewLine); // Save the record to the end of the file.
             MessageBox.Show($"New record set: {record}", "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // Display saved records / Mostrar registros guardados
         public static void ShowRecords()
         {
             if (File.Exists(path))
@@ -183,6 +196,7 @@ namespace Tic_Tac_ToeGame
 
         }
 
+        // Event handler for button clicks / Manejador de eventos para clics en botones
         private void btnTic1_Click_1(object sender, EventArgs e)
         {
             btnTic1.Enabled = false;
@@ -335,14 +349,16 @@ namespace Tic_Tac_ToeGame
             }
         }
 
+        // Start a new game / Iniciar un nuevo juego
         private void newGame_Click(object sender, EventArgs e)
         {
             int score = 0;
             string winner = "";
-            if (int.Parse(lblPlayerX.Text)> int.Parse(lblPlayerO.Text))
+            if (int.Parse(lblPlayerX.Text) > int.Parse(lblPlayerO.Text))
             {
                 score = int.Parse(lblPlayerX.Text);
-                if (tbx_PlayerX.Text == "") {
+                if (tbx_PlayerX.Text == "")
+                {
                     winner = "Player 1";
                 }
                 else
@@ -375,13 +391,15 @@ namespace Tic_Tac_ToeGame
             checker = false;
         }
 
+        // Exit the game and show records / Salir del juego y mostrar registros
         private void exit_Click(object sender, EventArgs e)
         {
             ShowRecords();
             Close();
         }
 
-        private void button11_Click(object sender, EventArgs e)
+        // Reset the board or create a new one without altering the score obtained so far / Reinicia el tablero o crea uno nuevo sin alterar la puntuación obtenida hasta el momento
+        private void btnReset_Click(object sender, EventArgs e)
         {
             Enable_False(true);
             ShowRecords();
