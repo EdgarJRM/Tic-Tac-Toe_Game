@@ -7,7 +7,7 @@ The program was created by integrating GitHub and Visual Studio with object-orie
 
 This game was created with the intention of learning C# to start programming video games but learning to handle the C# base as best as possible before using a video game engine.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=FnuT31Z8raY)
 
 
 # Development Environment

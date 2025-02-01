@@ -4,6 +4,8 @@ using System.Diagnostics.Metrics;
 using System.Runtime.Intrinsics.Arm;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Runtime.InteropServices;
+using System.Data;
 
 namespace Tic_Tac_ToeGame
 {
@@ -158,12 +160,41 @@ namespace Tic_Tac_ToeGame
             }
         }
 
-        // Save game record to a file / Guardar el registro del juego en un archivo
+
+
+        /// <summary>
+        /// Struct / Union used to write to the file
+        /// The FileRecord will hold a name or date record
+        /// </summary>
+        [StructLayout(LayoutKind.Explicit)]
+        public struct FileRecord
+        {
+            [FieldOffset(0)]
+            public string nameRecord;
+
+            [FieldOffset(0)]
+            public string dateRecord;
+
+            /// <summary>
+            /// override ToString to return the value,
+            /// since nameRecord and dateRecord are in the same offset
+            /// using either one will work
+            /// </summary>
+            /// <returns></returns>
+            public override string ToString()
+            {
+                return nameRecord;
+            }
+        }
+
         public static void SaveRecord(string playerName = "Player X", int score = 0)
         {
-            string record = $"{playerName} has won {score} games";
-            File.AppendAllText(path, record + Environment.NewLine); // Save the record to the end of the file.
-            MessageBox.Show($"New record set: {record}", "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // Save the date
+            FileRecord newRecord = new FileRecord { dateRecord = DateTime.Now.ToString() };
+            newRecord.nameRecord = $"{newRecord.dateRecord} {playerName} has won {score} games";
+            File.AppendAllText(path, newRecord.ToString() + Environment.NewLine); // Save the record to the end of the file.
+
+            MessageBox.Show($"New record set: {newRecord.nameRecord}", "Tic Tac Toe Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         // Display saved records / Mostrar registros guardados
@@ -367,7 +398,7 @@ namespace Tic_Tac_ToeGame
                 }
                 SaveRecord(winner, score);
             }
-            else if (int.Parse(lblPlayerX.Text) > int.Parse(lblPlayerO.Text))
+            else if (int.Parse(lblPlayerX.Text) < int.Parse(lblPlayerO.Text))
             {
                 score = int.Parse(lblPlayerO.Text);
                 if (tbx_PlayerO.Text == "")
